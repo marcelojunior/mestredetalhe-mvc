@@ -1,0 +1,64 @@
+﻿@model MestreDetalhe1.Models.Venda
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nova venda</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        <h4>Venda</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data)
+                @Html.ValidationMessageFor(model => model.Data)
+            </div>
+        </div>
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClienteId, "ClienteId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ClienteId", String.Empty)
+                @Html.ValidationMessageFor(model => model.ClienteId)
+            </div>
+        </div>
+
+        <!-- Lista de produtos vendidos -->
+        <div class="form-group">
+            @Html.Label("Itens", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="Lista">
+                    @Html.Partial("PartialItens", Model)
+                </div>
+
+                <!-- Scripts/Controllers/Vendas.js -->
+                <a href="#" class="addItem">AdicionarItem</a>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+    
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/controllers/vendas")  
+}

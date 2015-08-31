@@ -1,0 +1,21 @@
+﻿@model MestreDetalhe1.Models.Venda
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    @for (int i = 0; i < Model.Itens.Count; i++)
+    {
+        <tr>
+            <th>
+                @Html.DropDownListFor(model => model.Itens[i].ProdutoId, new SelectList(ViewBag.Produtos, "Id", "Nome", Model.Itens[i].ProdutoId), String.Empty)
+            </th>
+            <th>
+                @Html.EditorFor(model => model.Itens[i].Quantidade)
+            </th>
+        </tr>
+    }
+</table>

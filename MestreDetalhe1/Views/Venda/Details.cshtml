@@ -1,0 +1,35 @@
+﻿@model MestreDetalhe1.Models.Venda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+
+
+<div>
+    <h4>Venda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nome)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+    
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
